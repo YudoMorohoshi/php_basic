@@ -10,21 +10,19 @@ $num = $num / 2;
 echo $num; 
 
 // Q3 日付操作
-$now = date("Y年m月d日 H時i分s秒");
+date_default_timezone_set('Asia/Tokyo');
+$now = date("Y年m月d日 H時i分s秒");  
 echo "現在時刻は、" . $now . "です。";
 
 // Q4 条件分岐-1 if文
-$device = "mac"; 
+$device = "mac";
 
-if ($device == "windows") {
-    echo "使用OSは、windowsです。";
+if ($device == "windows" || $device == "mac") {
+echo "使用OSは、{$device}です。";
 } else {
-    if ($device == "mac") {
-        echo "使用OSは、macです。";
-    } else {
-        echo "どちらでもありません。";
-    }
+echo "どちらでもありません。";
 }
+
 
 // Q5 条件分岐-2 三項演算子
 $age = 1; 
@@ -82,14 +80,17 @@ $prefectures = array(
   "大阪府" => "大阪市"     
 );
 
+
+$kanto = array("東京都", "神奈川県", "千葉県", "埼玉県", "栃木県", "群馬県", "茨城県");  
+
 foreach ($prefectures as $prefecture => $capital) {
-  if ($prefecture == "東京都" || $prefecture == "神奈川県" || $prefecture == "千葉県" ||
-      $prefecture == "埼玉県" || $prefecture == "栃木県" || $prefecture == "群馬県" || $prefecture == "茨城県") {
+  if (in_array($prefecture, $kanto)) {
       echo $prefecture . "の県庁所在地は、" . $capital . "です。\n";
   } else {
       echo $prefecture . "は関東地方ではありません。\n";
   }
 }
+
 
 // Q10 関数-1
 function hello($name) {
